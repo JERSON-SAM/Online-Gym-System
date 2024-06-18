@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 80%;
+      margin: 20px auto 20px auto; /* Adjust the top margin as needed */
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+
+    .edit-button, .delete-button {
+      display: inline-block;
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 14px;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .edit-button {
+      background-color: #007BFF;
+    }
+
+    .delete-button {
+      background-color: #DC3545;
+    }
+
+    .goback-link {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      text-decoration: none;
+      color: #007BFF;
+      font-weight: bold;
+    }
+
+    .goback-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List of Equipments</title>
+</head>
+<body>
+  <div class="container">
+    <h1>List of All Equipments</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Equipment Class</th>
+          <th>Specs</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Status</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @adminarm.each do |equipment| %>
+          <tr>
+            <td><%= equipment.name %></td>
+            <td><%= equipment.equipment_class %></td>
+            <td><%= equipment.specs %></td>
+            <td><%= equipment.quantity %></td>
+            <td><%= equipment.price %></td>
+            <td><%= equipment.status %></td>
+            <td><a class="edit-button" href="<%= edit_equip_path(equipment.id) %>">Edit</a></td>
+            <td><a class="delete-button" href="<%= delete_path(equipment.id) %>">Delete</a></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <a class="goback-link" href="/adminlist">Go Back</a>
+  </div>
+</body>
+</html>

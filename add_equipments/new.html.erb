@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Equipment</title>
+</head>
+<body>
+  <h2>Add Equipment</h2>
+  <%= form_with(model: Equipment.new, url: '/equipments/add', method: 'post') do |form| %>
+    <%= form.label :name, 'Item Name:' %>
+    <%= form.text_field :name, required: true %><br><br>
+
+    <%= form.label :equip_class, 'Equipment Class:' %>
+    <%= form.select :equip_class, ['Arm Equipment', 'Leg Equipment', 'Other'], required: true %><br><br>
+
+    <%= form.label :specs, 'Specs:' %>
+    <%= form.text_field :specs, required: true %><br><br>
+
+    <%= form.label :quantity, 'Quantity:' %>
+    <%= form.number_field :quantity, required: true %><br><br>
+
+    <%= form.label :price, 'Price:' %>
+    <%= form.number_field :price, required: true %><br><br>
+
+    <%= form.label :status, 'Equipment Status' %>
+    <%= form.select :status, ['Available'], required: true %><br><br>
+
+    <%= form.submit %>
+  <% end %>
+</body>
+</html>
